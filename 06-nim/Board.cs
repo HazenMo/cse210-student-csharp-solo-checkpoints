@@ -12,12 +12,14 @@ namespace _06_nim
     class Board
     {
         // TODO: Declare any member variables here.
+        private List<int> _piles = new List<int>();
 
         /// <summary>
         /// Initialize the Board
         /// </summary>
         public Board()
         {
+            
         }
 
         /// <summary>

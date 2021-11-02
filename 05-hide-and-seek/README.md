@@ -8,6 +8,6 @@ continues until the hider is found.
 ---
 * .NET 5.x
 
-## Authors
+## Mosiah Hazen
 ---
-* Add your team names here...
+* Mystery Puzzle Game

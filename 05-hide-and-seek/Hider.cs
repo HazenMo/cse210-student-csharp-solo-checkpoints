@@ -13,13 +13,20 @@ namespace _05_hide_and_seek
     {
         // TODO: Add any member variables here
 
+        public int _location;
+
+        public List<int> _distances = new List<int>();
+
         /// <summary>
         /// Initializes the location of the hider to a random location 1-1000.
         /// Also initializes the list of distances to be a new, empty list.
         /// </summary>
         public Hider()
         {
-            throw new NotImplementedException();
+            Random randomGenerator = new Random();
+            _location = randomGenerator.Next(1, 1001);
+
+            _distances = new List<int>();
         }
 
         /// <summary>
@@ -29,7 +36,9 @@ namespace _05_hide_and_seek
         /// <param name="seekerLocation">The current location of the seeker.</param>
         public void Watch(int seekerLocation)
         {
-            throw new NotImplementedException();
+            int distanceFromSeeker = Math.Abs(_location - seekerLocation);
+
+            _distances.Add(distanceFromSeeker);
         }
 
         /// <summary>
@@ -43,7 +52,27 @@ namespace _05_hide_and_seek
         /// <returns>The hint message</returns>
         public string GetHint()
         {
-            throw new NotImplementedException();
+            if(IsFound())
+            {
+                return "(;.;) You found me!";
+            }
+
+            else if (_distances.Count >= 2)
+            {
+                if(_distances[_distances.Count - 1] < _distances[_distances.Count - 2])
+                {
+                    return "(>.<) Getting warmer!";
+                }
+                else
+                {
+                    return "(^.^) Getting colder!";
+                }
+            }
+
+            else
+            {
+                return "(^_^) I'm hiding!";
+            }
         }
 
         /// <summary>
@@ -52,7 +81,14 @@ namespace _05_hide_and_seek
         /// <returns>True if the hider has been found.</returns>
         public bool IsFound()
         {
-            throw new NotImplementedException();
+            if(_distances[_distances.Count - 1] == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
